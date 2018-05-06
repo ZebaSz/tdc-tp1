@@ -9,3 +9,6 @@
 
 # Jupyter
 .ipynb_checkpoints
+
+# Tramas, muy pesadas
+*.cap
