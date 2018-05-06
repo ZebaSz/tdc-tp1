@@ -11,7 +11,7 @@ def countPackets(pkt):
   print('{} sniffed so far     '.format(sniffed_count), end='\r')
 
 def printUsage():
-  print("Uso: cap.py <iface> [output.cap]")
+  print("Usage: cap.py <iface> [output.cap]")
 
 def main():
     try:
