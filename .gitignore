@@ -6,3 +6,6 @@
 *.pdf
 *.toc
 *.synctex.gz
+
+# Jupyter
+.ipynb_checkpoints
