@@ -1,0 +1,8 @@
+# Cosas de latex
+# Si hace falta agregar un pdf, agregar a mano
+*.out
+*.log
+*.aux
+*.pdf
+*.toc
+*.synctex.gz
