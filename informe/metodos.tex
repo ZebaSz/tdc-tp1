@@ -1,0 +1,27 @@
+\section{Métodos y Condiciones de los Experimentos}
+
+Para los experimentos, utilizamos Scapy, una herramienta desarrollada en Python con el propósito de capturar, manipular y analizar paquetes.
+
+Las redes sobre las que se corrieron los experimentos son:
+
+\begin{itemize}
+
+  \item Red pública de un restaurante de comida rápida: Se capturó el tráfico de una red Wi-Fi del McDonald's de Av. Corrientes y Malabia, esto fue un viernes entre las 18 y 20 horas, con una cantidad considerable de gente en el establecimiento.
+  
+  \item Red cableada en un ambiente laboral: También realizamos capturas sobre una red Ethernet cableada, en las oficinas de Despegar.com en Puerto Madero, esta misma se trata de una red grande.
+  
+  \item Red privada hogareña: Por último, realizamos capturas en una red doméstica a lo largo de varias horas, considerando que la misma es de tamaño reducido (no más de 4 dispositivos conectados) y en un horario de tráfico bajo (durante la madrugada).
+
+\end{itemize}
+
+El análisis se hizo utilizando conceptos de la Teoría de la Información, y a partir del tráfico capturado se representaron las siguientes fuentes de información:
+
+\begin{itemize}
+
+  \item Fuente $S_1$: los símbolos de esta fuente son una combinación entre el tipo de destino de la trama (unicast o broadcast) y el protocolo de la capa inmediatamente superior a la misma, formando símbolos de la forma $<broadcast, ARP>$, $<unicast, IPv4>$, etc.
+  
+  Para saber el tipo de destino nos fijamos en la trama capturada y si la dirección de destino es \texttt{ff:ff:ff:ff:ff:ff} quiere decir que es un broadcast y si no un unicast.
+  
+  \item Fuente $S_2$: esta fue modelada con el objetivo de distinguir los distintos hosts participantes de cada red. Para eso se usaron las direcciones IP enviadas dentro de los paquetes ARP, tomando cada dirección IP como un símbolo. Hay paquetes ARP que no aportan información de la que necesitamos, los de tipo gratuitous, donde el source y el target son la misma IP. Estos no aportan información sobre la topología de la red, e incluso no están incluídos en la especificación del protocolo (RFC 826), pero se mandan porque la información puede llegar a ser útil en algunos casos. El otro tipo de request que van a interferir con nuestro análisis son los de tipo \texttt{IS-AT} ya que, a menos que estemos en una lugar privilegiado de la red (esencialmente interceptando todo el tráfico que llega al gateway), solo vamos a capturar las respuestas que parten de o van dirigidas al nodo con el cual capturamos los paquetes.
+
+\end{itemize}
