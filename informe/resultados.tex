@@ -61,5 +61,15 @@ Con el fin de realizar un análisis más exhaustivo, resulta útil estudiar los 
 
 \subsection{Red corporativa}
 
-En la captura realizada sobre red Wi-Fi de la oficina podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las redes B y C. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red.
+En la captura realizada sobre red Wi-Fi de la oficina podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las redes B y C. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red. Es interesante observar la cantidad de paquetes tipo \texttt{IPV4 Broadcast}, este tipo de paquete es mayormente utilizado por protocolos de capas superiores, como NetBT, para tener más una mayor información sobre la red, ya que en un ambiente corporativo es muy necesario para detectar errores rápidamente.
 
+
+\subsection{Modelo de fuente $S_2$}
+
+
+$<$ tipo de paquete ARP, IP destino $>$ \\
+
+
+Cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
+
+ 
