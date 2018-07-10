@@ -61,7 +61,39 @@ Con el fin de realizar un análisis más exhaustivo, resulta útil estudiar los 
 
 \subsection{Red corporativa}
 
-En la captura realizada sobre red Wi-Fi de la oficina podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las redes B y C. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red. Es interesante observar la cantidad de paquetes tipo \texttt{IPV4 Broadcast}, este tipo de paquete es mayormente utilizado por protocolos de capas superiores, como NetBT, para tener más una mayor información sobre la red, ya que en un ambiente corporativo es muy necesario para detectar errores rápidamente.
+En el caso de la red cableada, es notoria la desproporción entre paquetes broadcast y unicast. Consideramos que una posible explicación de este fenómeno se debe a que al ser la red privada de una vivienda los hosts conectados a la misma más que comunicarse entre ellos estarán accediendo mediante el gateway a Internet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/despegar_torta_simbolos}
+	\caption{Red corporativa - Símbolos}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/despegar_torta_tipos}
+	\caption{Red corporativa - Tipos}
+\end{figure}
+
+\subsection{Red pública (McDonald's)}
+
+En la captura realizada sobre la red pública podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las red corporativa y la doméstica. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red. Es interesante observar la cantidad de paquetes tipo \texttt{IPV4 Broadcast}, este tipo de paquete es mayormente utilizado por protocolos de capas superiores, como NetBT, para tener más una mayor información sobre la red, ya que en un ambiente corporativo es muy necesario para detectar errores rápidamente.
+
+\subsection{Red doméstica}
+
+Como puede observarse en los siguientes gráficos, los resultados obtenidos para la fuente $S_1$ muestran que los paquetes de tipo broadcast son casi inexistentes. Este fenómeno se puede explicar, por el siguiente motivo: los paquetes de tipo broadcast suelen corresponder con protocolos de control, como ARP, y dado que las comunicaciones en general se dan exclusivamente entre el default gateway y los demás nodos, los protocolos de control no son requeridos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/manu_casa_torta_simbolos}
+	\caption{Red doméstica - Símbolos}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/manu_casa_torta_tipos}
+	\caption{Red doméstica - Tipos}
+\end{figure}
 
 
 \subsection{Modelo de fuente $S_2$}
