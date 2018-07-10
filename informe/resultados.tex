@@ -72,4 +72,8 @@ $<$ tipo de paquete ARP, IP destino $>$ \\
 
 Cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
 
- 
+Despegar S2 BARPLOT
+
+Podemos observar que si bien hay más paquetes de tipo \texttt{WHO-HAS}, los paquete \texttt{IS-AT} no son pocos, casi el 25\% de los paquetes capturados, esto nos habla de una gran interacción entre los dispositivos pertenecientes a la red. También se puede apreciar que hay símbolos que aportan menos información que los demás. Puntualmente hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía, estos nodos distinguidos posiblemente sean las ips referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
+
+
