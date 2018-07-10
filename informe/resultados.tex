@@ -23,7 +23,7 @@ Los siguientes graficos muestran para cada red la información para cada uno de 
 	\end{minipage}
 \end{figure}
 
-Sobre esta red observamos un trafico medianamente distriubido de los símbolos obtenidos. La mitad de ellos son \texttt{IPV4 UNICAST}, casi un 20 \% de \texttt{IPV4 BROADCAST} y entre 12\% y 8\% el resto. Puede verse una gran cantidad de informacion proveniente del símbolo \texttt{LLDP UNICAST}. Este protocolo es conocido cómo \textit{Link Layer Discovery Protocol}. La prescencia de este tipo de paquete se explica con que se usa como un componente en aplicaciones de administración y monitoreo de red, lo cual es común en redes corporativas. La baja frecuencia de este tipo de paquete repercute en que la información del símbolo sea muy alta.
+Sobre esta red observamos un trafico medianamente distribuido de los símbolos obtenidos. La mitad de ellos son \texttt{IPV4 UNICAST}, casi un 20 \% de \texttt{IPV4 BROADCAST} y entre 12\% y 8\% el resto. Puede verse una gran cantidad de informacion proveniente del símbolo \texttt{LLDP UNICAST}. Este protocolo es conocido cómo \textit{Link Layer Discovery Protocol}. La prescencia de este tipo de paquete se explica con que se usa como un componente en aplicaciones de administración y monitoreo de red, lo cual es común en redes corporativas. La baja frecuencia de este tipo de paquete repercute en que la información del símbolo sea muy alta.
 
 Con el fin de realizar un análisis más exhaustivo, resulta útil estudiar los porcentajes relativos de aparición de los distintos símbolos de la fuente S1 para cada red.
 
@@ -118,9 +118,7 @@ Como puede observarse en los gráficos, los resultados obtenidos para la fuente 
 
 \subsection{Modelo de fuente \texorpdfstring{$S_2$}{S2}}
 
-Este modelo contiene símbolos de la forma $< tipo de paquete ARP, IP destino >$
-
-Cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
+Antes que nada, cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
 
 \begin{figure}[H]
 	\centering
