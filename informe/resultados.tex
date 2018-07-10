@@ -42,7 +42,7 @@ Con el fin de realizar un análisis más exhaustivo, resulta útil estudiar los 
 	\end{minipage}
 \end{figure}
 
-En este caso, existe una desproporción entre paquetes broadcast y unicast. Sin embargo, la proporción de paquetes broadcast y además la cantidad de paquetes ARP parece indicar que existe bastante interacción entre los nodos dentro de la red.
+En este caso, existe una desproporción entre paquetes broadcast y unicast. Sin embargo, la proporción de paquetes broadcast y además la cantidad de paquetes ARP parece indicar que existe bastante interacción entre los nodos dentro de la red. Al ser una red con gran cantidad de hosts donde varios de ellos se comunican entre sí, estos necesitan mantenerse actualizados en cuanto a la información sobre la red. Es interesante observar la cantidad de paquetes tipo \texttt{IPV4 Broadcast}, este tipo de paquete es mayormente utilizado por protocolos de capas superiores, como NetBT, para tener más una mayor información sobre la red, ya que en un ambiente corporativo es muy necesario para detectar errores rápidamente.
 
 \subsubsection{Red pública (McDonald's)}
 
@@ -78,7 +78,7 @@ La principal motivación para estudiar la red de McDonald's fue poder observar u
 	\end{minipage}
 \end{figure}
 
-En la captura realizada sobre la red pública podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las red corporativa y la doméstica. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red. Es interesante observar la cantidad de paquetes tipo \texttt{IPV4 Broadcast}, este tipo de paquete es mayormente utilizado por protocolos de capas superiores, como NetBT, para tener más una mayor información sobre la red, ya que en un ambiente corporativo es muy necesario para detectar errores rápidamente.
+En la captura realizada sobre la red pública podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las red corporativa y la doméstica.
 
 \subsubsection{Red doméstica}
 
@@ -97,7 +97,7 @@ En la captura realizada sobre la red pública podemos ver que la cantidad de paq
 	\end{minipage}
 \end{figure}
 
-Para el grafico de la red doméstica podemos observar un predominancia en los paquetes \texttt{IPV4 UNICAST}, conformando mas de un 80\% de los paquetes que transitan por la red, seguido por un 18\% de paquetes \texttt{IPV6 UNICAST}. La entropía es de 0.797. Este número resulta mucho mas baja que las demás, y creemos que se debe justamente a que la gran mayoría de los paquetes es \texttt{UNICAST}, y esto provoca que el tráfico de la red sea fácil de predecir.
+Para el grafico de la red doméstica podemos observar un predominancia en los paquetes \texttt{IPV4 UNICAST}, conformando mas de un 80\% de los paquetes que transitan por la red, seguido por un 18\% de paquetes \texttt{IPV6 UNICAST}. La entropía es de 0.797. Este número resulta mucho mas baja que las demás, y creemos que se debe justamente a que la gran mayoría de los paquetes es \texttt{UNICAST}, y esto provoca que el tráfico de la red sea fácil de predecir. La entropía es mucho menor en esta red que en las dos anteriores, lo cual indica una peor distribución en cuanto a los símbolos analizados. De la misma forma podemos observar que la red corporativa presenta una mejor distribución de los símbolos, lo cual se condice con su entropía, siendo esta la mayor de entre las tres redes.
 
 \begin{figure}[H]
 	\begin{minipage}{0.49\textwidth}
