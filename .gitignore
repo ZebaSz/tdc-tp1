@@ -12,3 +12,4 @@
 
 # Tramas, muy pesadas
 *.cap
+.DS_Store
