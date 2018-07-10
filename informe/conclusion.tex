@@ -4,6 +4,8 @@ Un análisis interesante se origina al comparar las diferentes redes, las cuales
 
 Mediante el cálculo de la entropía podemos determinar que tan predecible es una red, a menor entropía es más fácil predecir.
 
+Dejando de lado el análisis de la topología de la red por un momento, resulta interesante comparar la cantidad de información de los símbolos que aparecieron. En la figura 14 podemos notar que, efectivamente, hay símbolos que cargan mucha más información que otros. Si lo que buscamos es identificar nodos distinguidos, nos interesan los símbolos que cargan menor información, pues son los más frecuentes e indican actividad intensa (como puede ser la actividad correspondiente a un router).
+
 Las zonas de colisión también juegan un factor importante en la recolección de datos ya que tendremos otra posibilidad de observar los paquetes que realmente viajan por la red. Este rasgo también se pudo evidenciar en los distintos análisis de las fuentes, al comparar los paquetes unicast contra los broadcast.
 
 Nuestro modelos de análisis no es muy acertado, usamos fuentes de memoria nula cuando en realidad sabemos que, por ejemplo, captar la circulación de un paquete IS-AT es más probable si ya captamos un WHO-HAS. Sería interesante analizar cuales serian los resultados si tuviésemos en cuenta paquetes anteriores para determinar la probabilidad de uno nuevo.
