@@ -9,29 +9,29 @@ $<$ protocolo, tipo destino $>$ \\
 
 Los siguientes graficos muestran para cada red la información para cada uno de sus símbolos capturados, las probabilidades de que estos sean registrados, la entropía registrada y la entropía máxima.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/despegar_barras_prob}
 	\caption{Red corporativa(despegar.com) - Probabilidad}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/despegar_barras_info}
 	\caption{Red corporativa(despegar.com) - Información}
 \end{figure}
 
-En cuanto a la red laboral observamos un trafico medianamente distriubido de los símbolos obtenidos. La mitad de ellos son \texttt{IPV4 UNICAST}, casi un 20 \% de \texttt{IPV4 BROADCAST} y entre 12\% y 8\% el resto. Puede verse una gran cantidad de informacion proveniente del símbolo \texttt{LLDP UNICAST}. Este protocolo es conocido cómo \textit{Link Layer Discovery Protocol}. La prescencia de este tipo de paquete se explica con que  se usa como un componente en aplicaciones de administración y monitoreo de red, lo cual es común en redes corporativas.
+En cuanto a la red laboral observamos un trafico medianamente distriubido de los símbolos obtenidos. La mitad de ellos son \texttt{IPV4 UNICAST}, casi un 20 \% de \texttt{IPV4 BROADCAST} y entre 12\% y 8\% el resto. Puede verse una gran cantidad de informacion proveniente del símbolo \texttt{LLDP UNICAST}. Este protocolo es conocido cómo \textit{Link Layer Discovery Protocol}. La prescencia de este tipo de paquete se explica con que se usa como un componente en aplicaciones de administración y monitoreo de red, lo cual es común en redes corporativas.
 
 La entropía es de 1.949. 
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/mac_barras_prob}
 	\caption{Red pública(McDonald's) - Probabilidad}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/mac_barras_info}
 	\caption{Red pública(McDonald's) - Información}
@@ -39,13 +39,13 @@ La entropía es de 1.949.
 
 La principal motivación para estudiar la red de McDonald's fue poder observar un medio con mucha actividad, el hecho de que se tratara de una red inalámbrica permitió además contrastar las diferencias frente a la primer captura sobre una red cableada. Se nota la gran cantidad de paquetes \texttt{ARP BROADCAST}, son el 60\% de los capturados. Nuestra hipótesis es que la continua fluctuación de hosts en esta red provoca que se disparen muchos paquetes de control para mantener actualizado el estado de la misma.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/manu_casa_barras_prob}
 	\caption{Red doméstica - Probabilidad}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/manu_casa_barras_info}
 	\caption{Red doméstica - Información}
@@ -53,7 +53,7 @@ La principal motivación para estudiar la red de McDonald's fue poder observar u
 
 Para el grafico de la red doméstica podemos observar un predominancia en los paquetes \texttt{IPV4 UNICAST}, conformando mas de un 80\% de los paquetes que transitan por la red, seguido por un 18\% de paquetes \texttt{IPV6 UNICAST}. La entropía es de 0.797. Este número resulta mucho mas baja que las demás, y creemos que se debe justamente a que la gran mayoría de los paquetes es \texttt{UNICAST}, y esto provoca que el tráfico de la red sea fácil de predecir.
 
-Una posible hipótesis de por que estas redes presentan entropía mayor es, quizás, que el gran tamanño de estas y los posibles tipos de interacciones entre los dispositivos conectados a las redes resulten en una mayor proporción del trafico destinado al control.
+Una posible hipótesis de por que estas redes presentan entropía mayor es, quizás, que el gran tamaño de estas y los posibles tipos de interacciones entre los dispositivos conectados a las redes resulten en una mayor proporción del trafico destinado al control.
 
 
 
@@ -61,5 +61,19 @@ Con el fin de realizar un análisis más exhaustivo, resulta útil estudiar los 
 
 \subsection{Red corporativa}
 
-En la captura realizada sobre red Wi-Fi de la oficina podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las redes B y C. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red.
+En la captura realizada sobre red Wi-Fi de la oficina podemos ver que la cantidad de paquetes destinados al control de la red es considerablemente mayor con respecto a las redes B y C. Una posible hipótesis a este resultado es el hecho de que al ser una red de muchos hosts donde varios de ellos se comunican entre sí es necesario para estos mantener actualizada la información sobre la red. Es interesante observar la cantidad de paquetes tipo \texttt{IPV4 Broadcast}, este tipo de paquete es mayormente utilizado por protocolos de capas superiores, como NetBT, para tener más una mayor información sobre la red, ya que en un ambiente corporativo es muy necesario para detectar errores rápidamente.
+
+
+\subsection{Modelo de fuente $S_2$}
+
+
+$<$ tipo de paquete ARP, IP destino $>$ \\
+
+
+Cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
+
+Despegar S2 BARPLOT
+
+Podemos observar que si bien hay más paquetes de tipo \texttt{WHO-HAS}, los paquete \texttt{IS-AT} no son pocos, casi el 25\% de los paquetes capturados, esto nos habla de una gran interacción entre los dispositivos pertenecientes a la red. También se puede apreciar que hay símbolos que aportan menos información que los demás. Puntualmente hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía, estos nodos distinguidos posiblemente sean las ips referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
+
 
