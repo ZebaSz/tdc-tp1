@@ -61,7 +61,7 @@ En este caso, existe una desproporción entre paquetes broadcast y unicast. Sin 
 	\end{minipage}
 \end{figure}
 
-La principal motivación para estudiar la red de McDonald's fue poder observar un medio con mucha entrada y salida de dispositivos, el hecho de que se tratara de una red inalámbrica permitió además contrastar las diferencias frente a la primer captura sobre una red cableada. Se nota la gran cantidad de paquetes \texttt{ARP BROADCAST}, son el 60\% de los capturados. Nuestra hipótesis es que la continua fluctuación de hosts en esta red provoca que se disparen muchos paquetes de control para mantener actualizado el estado de la misma.
+La principal motivación para estudiar la red de McDonald's fue poder observar un medio con mucha entrada y salida de dispositivos, el hecho de que se tratara de una red inalámbrica permitió además contrastar las diferencias frente a la primer captura sobre una red cableada. Se nota la gran cantidad de paquetes \texttt{ARP BROADCAST}, son el 60\% de los capturados por lo que la información que proveen es escasa. Nuestra hipótesis es que la continua fluctuación de hosts en esta red provoca que se disparen muchos paquetes de control para mantener actualizado el estado de la misma. 
 
 \begin{figure}[H]
 	\begin{minipage}{0.49\textwidth}
@@ -116,14 +116,17 @@ Para el grafico de la red doméstica podemos observar un predominancia en los pa
 
 Como puede observarse en los gráficos, los resultados obtenidos para la fuente $S_1$ muestran que los paquetes de tipo broadcast son casi inexistentes. Este fenómeno se puede explicar, por el siguiente motivo: los paquetes de tipo broadcast suelen corresponder con protocolos de control, como ARP, y dado que las comunicaciones en general se dan exclusivamente entre el default gateway y los demás nodos, los protocolos de control no son requeridos.
 
-
 \subsection{Modelo de fuente \texorpdfstring{$S_2$}{S2}}
 
 Este modelo contiene símbolos de la forma $< tipo de paquete ARP, IP destino >$
 
 Cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
 
-Despegar S2 BARPLOT
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/despegar_hosts}
+	\caption{Red corporativa}
+\end{figure}
 
 Podemos observar que si bien hay más paquetes de tipo \texttt{WHO-HAS}, los paquete \texttt{IS-AT} no son pocos, casi el 25\% de los paquetes capturados, esto nos habla de una gran interacción entre los dispositivos pertenecientes a la red. También se puede apreciar que hay símbolos que aportan menos información que los demás. Puntualmente hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía, estos nodos distinguidos posiblemente sean las ips referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
 
