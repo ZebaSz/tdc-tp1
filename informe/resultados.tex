@@ -120,12 +120,42 @@ Como puede observarse en los gráficos, los resultados obtenidos para la fuente 
 
 Antes que nada, cabe destacar los cambios en la cantidad de símbolos con el modelo anterior. Este hace una distinción por cada host distinto dentro de las capturas, y al tener capturas en las que hay muchos dispositivos en juego, la cantidad de símbolos distintos aumenta linealmente con ellos.
 
+\subsubsection{Red corporativa}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/despegar_hosts}
 	\caption{Red corporativa}
 \end{figure}
 
+
+
 Podemos observar que si bien hay más paquetes de tipo \texttt{WHO-HAS}, los paquete \texttt{IS-AT} no son pocos, casi el 25\% de los paquetes capturados, esto nos habla de una gran interacción entre los dispositivos pertenecientes a la red. También se puede apreciar que hay símbolos que aportan menos información que los demás. Puntualmente hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía, estos nodos distinguidos posiblemente sean las ips referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
 
+GRAFICO CON 239 SIMBOLOS
 
+Con este gráfico se evidencia el gran aumento en los símbolos con respecto a la fuente anterior, en este caso de 239 símbolos.
+\subsubsection{Red pública}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/mac_hosts}
+	\caption{Red pública}
+\end{figure}
+
+Podemos observar que la cantidad de símbolos decreció abruptamente con respecto a la red anterior, y esto evidencia la diferencia de hosts que existe entre una red y otra. Era esperable que la cantidad de hosts sea mucho menor a la corporativa puesto que la primer red tiene muchos dispositivos destinados a la empresa mientras que la pública solo cuenta con algunos esporádicos clientes que deciden conectarse (por más que hayan muchos consumidores en el lugar, eso no significa que se conecten a la red).
+
+Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.1} se ubica por debajo de la entropía, es el que menos información aporta. Por ello deducimos que al ser un símbolo de \texttt{WHO-HAS}, 172.19.0.1 es el router, ya que es el más requerido. Podemos concluir esto último ya que cuanta menos información aporte mayor es su probabilidad de aparición.
+
+\subsubsection{Red doméstica}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.5\linewidth]{imagenes/manu_casa_hosts}
+	\caption{Red doméstica}
+\end{figure}
+
+-----------------------------
+observacion: NO HAY UN WHO-HAS POR CADA IS-AT
+
+Mientras mas grande la red mas ARP, debido a que se requieren mas paquetes de control para mantener el estado de la red en actualizado en cada nodo
