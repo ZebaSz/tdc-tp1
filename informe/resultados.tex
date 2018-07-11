@@ -140,11 +140,12 @@ Un detalle que nos interesó en particular tiene que ver con los hosts que prove
 	\caption{Red corporativa}
 \end{figure}
 
-Puntualmente, hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía. Estos nodos distinguidos posiblemente sean las IPs referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
+Hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía. Tanto estos nodos como algunos de los otros presentes en el gráfico se pueden considerar distinguidos, pues posiblemente sean las IPs referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
 
-%TODO: Podemos decir que mas alla de que esos 6 dan poca informacion, hay otros que tambien dan poca inforamcion pero estan por arriba de la entropia por poco, podriamos decir que si bien son menos destacados que los 6 primeros son mucho mas frecuentes que el comun de los simbolos. (osea la entropía agarra a los mas distinguidos pero no a todos~~~~~)
+%los GWs en despe terminan con .254, que coincide con lo que vemos en el gráfico, lo mencionamos?
 
 \subsubsection{Red pública}
+
 
 \begin{figure}[H]
 	\centering
@@ -154,14 +155,18 @@ Puntualmente, hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropí
 
 Podemos observar que la cantidad de símbolos decreció abruptamente con respecto a la red anterior, y esto evidencia la diferencia de hosts que existe entre una red y otra. Era esperable que la cantidad de hosts sea mucho menor a la corporativa puesto que la primer red tiene muchos dispositivos destinados a la empresa mientras que la pública solo cuenta con algunos esporádicos clientes que deciden conectarse (por más que hayan muchos consumidores en el lugar, eso no significa que se conecten a la red).
 
+Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.1} se ubica por debajo de la entropía, es el que menos información aporta. Por ello deducimos que al ser un símbolo de \texttt{WHO-HAS}, 172.19.0.1 es el router, ya que es el más requerido. Podemos concluir esto último ya que cuanta menos información aporte mayor es su probabilidad de aparición.
+
+Otro detalle a tener en cuenta es nuestra posición en la red: al tratarse de una conexión inalámbrica, es mucho menos probable que captemos paquetes que no nos corresponden.
+
+Cabe destacar que al realizar el análisis de esta red encontramos una cantidad bastante alta de paquetes que consideramos \textit{gratuitous} (mismo destino \texttt{IS-AT} y origen \texttt{WHO-HAS}. Al analizarlos a fondo encontramos un protocolo de descubrimiento de dispositivos (SSDP). Con este protocolo, después de encontrar un paquete de tipo \texttt{discover}, los dispositivos envian un paquete ARP \textit{gratuitous}, que genera ruido e información que no necesitamos en el analisis.
+
 % TODO: No solamente hay menor cantidad de nodos si no que tambien hay una menor interaccion entre los dispositivos de la red (en una red coorporativa se espera que los nodos trabajen entre sí, en la pública esperamos que las interacciones sean con el gateway)
 
 Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.1} se ubica por debajo de la entropía, es el que menos información aporta. Por ello deducimos que al ser un símbolo de \texttt{WHO-HAS}, 172.19.0.1 es el router, ya que es el más requerido. Podemos concluir esto último ya que cuanta menos información aporte mayor es su probabilidad de aparición.
 
 % TODO: si ponemos el TODO anterior podemos decir que el unico nodo distinuido es el router ya que en esta topologia esperamos jutamente la interaccion con el gateway mayormente
 
-% TODO: Hay que tneer en cuenta que para esta fuente filtramos los paquetes ARP de tipo gratuitous. Revisando los paquetes encontramos un protocolo de descubrimiento de dispositivos (SSDP), el cual despues de encontrar un paquete de tipo ssdp:discover, los dispositivos envian un paquete ARP gratuitous(is at destino y source iguales). Esto genera ruido e información que no necesitamos en el analisis.
- 
 \subsubsection{Red doméstica}
 
 \begin{figure}[H]
@@ -171,3 +176,9 @@ Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.
 \end{figure}
 
 % TODO: podemos decir que es la que menos dispositivos tiene, aun menos que la del mac, y que al ser domestica es privada por lo que esperemos que tenga menos servicios de control (solamente la contraseña de la red wifi)
+
+Como era de esperar, la red doméstica contiene muy pocos hosts y es altamente predecible: los clientes no se comunican entre sí la mayor parte del tiempo, salvo con el nodo principal y distinguido, el router. El mismo se encuentra posicionado como default gateway en una IP muy común en redes hogareñas: \texttt{192.168.0.1}.
+
+La distribución de los símbolos también confirma nuestras ideas sobre la posición de nuestro dispositivo en la red: la gran mayoría de los paquetes capturados son \texttt{WHO-HAS}, un broadcast, mientras que los \texttt{IS-AT} obtenidos son muy esporádicos. Considerando que todos los dispositivos se comunican exclusivamente a través del router, sería lógico que el mismo solo nos relegue los \texttt{IS-AT} correspondientes a él mismo, además de aquellos que son enviados por nuestras computadoras.
+
+%que onda con las IPs raras que no son 192.168.0.x?
