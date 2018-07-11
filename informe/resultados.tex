@@ -149,6 +149,8 @@ Podemos observar que la cantidad de símbolos decreció abruptamente con respect
 
 Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.1} se ubica por debajo de la entropía, es el que menos información aporta. Por ello deducimos que al ser un símbolo de \texttt{WHO-HAS}, 172.19.0.1 es el router, ya que es el más requerido. Podemos concluir esto último ya que cuanta menos información aporte mayor es su probabilidad de aparición.
 
+% TODO: Hay que tneer en cuenta que para esta fuente filtramos los paquetes ARP de tipo gratuitous. Revisando los paquetes encontramos un protocolo de descubrimiento de dispositivos (SSDP), el cual despues de encontrar un paquete de tipo ssdp:discover, los dispositivos envian un paquete ARP gratuitous(is at destino y source iguales). Esto genera ruido e información que no necesitamos en el analisis.
+ 
 \subsubsection{Red doméstica}
 
 \begin{figure}[H]
