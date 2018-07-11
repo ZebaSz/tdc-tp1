@@ -122,21 +122,26 @@ Antes que nada, cabe destacar los cambios en la cantidad de símbolos con el mod
 
 \subsubsection{Red corporativa}
 
+Dada la naturaleza de la red corporativa, es de esperarse que la cantidad de símbolos en $S_2$ sea elevada, ya que los mismos se distinguen por IP. Bajo nuestra categorización, encontramos un total de 239 símbolos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{imagenes/despegar_barras_all}
+	\caption{Red corporativa - Todos los símbolos}
+\end{figure}
+
+Pudimos observar que si bien hay más paquetes de tipo \texttt{WHO-HAS}, los paquete \texttt{IS-AT} no son pocos, casi el 25\% de los paquetes capturados, esto nos habla de una gran interacción entre los dispositivos pertenecientes a la red. En primera instancia, esperabamos encontrar una proporción cercana a 1:1, siendo que para cada pedido de \texttt{WHO-HAS} suele haber un nodo que lo responda. Nuestra hipótesis al respecto es que no tenemos acceso a todas las respuestas \texttt{IS-AT}, o también que esas redes no existen (pero esto es muy poco probable). Otra posible explicación es que la red está switcheada, lo cual justamente limita la cantidad de respuestas \texttt{IS-AT} que podemos ver porque limita la zona de colisión.
+
+Un detalle que nos interesó en particular tiene que ver con los hosts que proveen menor informacion. Para ver esto, usamos un gráfico una pequeña porción de los hosts:
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=.5\linewidth]{imagenes/despegar_hosts}
 	\caption{Red corporativa}
 \end{figure}
 
+Puntualmente, hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía. Estos nodos distinguidos posiblemente sean las IPs referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
 
-
-Podemos observar que si bien hay más paquetes de tipo \texttt{WHO-HAS}, los paquete \texttt{IS-AT} no son pocos, casi el 25\% de los paquetes capturados, esto nos habla de una gran interacción entre los dispositivos pertenecientes a la red. También se puede apreciar que hay símbolos que aportan menos información que los demás. Puntualmente hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía, estos nodos distinguidos posiblemente sean las ips referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
-
-En cuanto a la proporción entre \texttt{WHO-HAS} y \texttt{IS-AT} esperabamos encontrar algo similar a un 50 \% de cada una, siendo que para cada pedido de \texttt{WHO-HAS}, haya algun nodo que le responda. Nuestra hipótesis al respecto es que no tenemos acceso a las respuestas  \texttt{IS-AT}, o también que esas redes no existen (pero esto es muy poco probable). Otra posible explicación es que la red está switcheada, lo cual justamente limita la cantidad de respuestas \texttt{IS-AT} que podemos ver porque limita la zona de colisión.
-
-GRAFICO CON 239 SIMBOLOS
-
-Con este gráfico se evidencia el gran aumento en los símbolos con respecto a la fuente anterior, en este caso de 239 símbolos.
 \subsubsection{Red pública}
 
 \begin{figure}[H]
