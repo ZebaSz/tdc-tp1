@@ -140,9 +140,7 @@ Un detalle que nos interesó en particular tiene que ver con los hosts que prove
 	\caption{Red corporativa}
 \end{figure}
 
-Hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía. Tanto estos nodos como algunos de los otros presentes en el gráfico se pueden considerar distinguidos, pues posiblemente sean las IPs referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios.
-
-%los GWs en despe terminan con .254, que coincide con lo que vemos en el gráfico, lo mencionamos?
+Hay 6 símbolos de tipo \texttt{WHO-HAS} por debajo de la entropía. Tanto estos nodos como algunos de los otros presentes en el gráfico se pueden considerar distinguidos, pues posiblemente sean las IPs referidas a gateways o a servidores que deben ser recurridos frecuentemente por distintos usuarios. De todos modos, resulta dificil inferir a partir de estos datos cuales se tratan de routers o gateways. En particular, utilizando otras herramientas daría la impresión que la red utiliza IPs terminadas en \texttt{.254} (es decir, de la forma \texttt{10.x.x.254}) para los gateways, y sin embargo el símbolo de mayor frecuenta es \texttt{WHO-HAS 10.254.97.194} que no corresponde con ese patrón.
 
 \subsubsection{Red pública}
 
@@ -161,11 +159,11 @@ Otro detalle a tener en cuenta es nuestra posición en la red: al tratarse de un
 
 Cabe destacar que al realizar el análisis de esta red encontramos una cantidad bastante alta de paquetes que consideramos \textit{gratuitous} (mismo destino \texttt{IS-AT} y origen \texttt{WHO-HAS}. Al analizarlos a fondo encontramos un protocolo de descubrimiento de dispositivos (SSDP). Con este protocolo, después de encontrar un paquete de tipo \texttt{discover}, los dispositivos envian un paquete ARP \textit{gratuitous}, que genera ruido e información que no necesitamos en el analisis.
 
-% TODO: No solamente hay menor cantidad de nodos si no que tambien hay una menor interaccion entre los dispositivos de la red (en una red coorporativa se espera que los nodos trabajen entre sí, en la pública esperamos que las interacciones sean con el gateway)
-
 Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.1} se ubica por debajo de la entropía, es el que menos información aporta. Por ello deducimos que al ser un símbolo de \texttt{WHO-HAS}, 172.19.0.1 es el router, ya que es el más requerido. Podemos concluir esto último ya que cuanta menos información aporte mayor es su probabilidad de aparición.
 
-% TODO: si ponemos el TODO anterior podemos decir que el unico nodo distinuido es el router ya que en esta topologia esperamos jutamente la interaccion con el gateway mayormente
+Por último, al tratarse de una red pública es de esperar que haya una concentración fuerte de paquetes, siendo \texttt{WHO-HAS 172.19.0.1} el símbolo más común. Dado que los equipos de esta red están mayormente aislados y no se comunican entre sí, el tráfico de control es extremadamente predecible.
+
+En ese sentido, a nivel topológico, podemos decir que el router es el único nodo distinguido. El otro paquete de baja información es un \texttt{IS-AT}, que podemos inferir proviene de nuestro propio equipo ya que es el único que podemos escuchar.
 
 \subsubsection{Red doméstica}
 
@@ -175,10 +173,10 @@ Nótese que en el grafico la información del símbolo \texttt{WHO-HAS 172.19.0.
 	\caption{Red doméstica}
 \end{figure}
 
-% TODO: podemos decir que es la que menos dispositivos tiene, aun menos que la del mac, y que al ser domestica es privada por lo que esperemos que tenga menos servicios de control (solamente la contraseña de la red wifi)
+Como era de esperar, la red doméstica contiene muy pocos hosts y es altamente predecible: los nodos se comunican poco entre sí, y la mayor parte del tiempo lo hacen el nodo principal y distinguido, el router. El mismo se encuentra posicionado como default gateway en una IP muy común en redes hogareñas: \texttt{192.168.0.1}.
 
-Como era de esperar, la red doméstica contiene muy pocos hosts y es altamente predecible: los clientes no se comunican entre sí la mayor parte del tiempo, salvo con el nodo principal y distinguido, el router. El mismo se encuentra posicionado como default gateway en una IP muy común en redes hogareñas: \texttt{192.168.0.1}.
+No obstante, el tráfico resulta menos predecible que el de la red pública. Esto nos sorprendió bastante, aunque es bastante lógico por un detalle previamente mencionado: la red doméstica es de confianza e incluye un cierto grado de interacción entre los distintos hosts. En contraste, la red pública mantiene a los hosts mayormente aislados entre sí, ya que el único propósito de la misma es el acceso a Internet.
 
 La distribución de los símbolos también confirma nuestras ideas sobre la posición de nuestro dispositivo en la red: la gran mayoría de los paquetes capturados son \texttt{WHO-HAS}, un broadcast, mientras que los \texttt{IS-AT} obtenidos son muy esporádicos. Considerando que todos los dispositivos se comunican exclusivamente a través del router, sería lógico que el mismo solo nos relegue los \texttt{IS-AT} correspondientes a él mismo, además de aquellos que son enviados por nuestras computadoras.
 
-%que onda con las IPs raras que no son 192.168.0.x?
+Nos resultó llamativa la aparición de algunos símbolos que, bajo nuestro análisis, no deberían figurar en una red doméstica. Se tratan de aquellos cuyas IPs no están dentro del rango de una red privada hogareña típica (\texttt{192.168.0.255/24}). Una de ellas, \texttt{100.102.216.138}, se encuentra en un rango reservado a NAT a nivel proveedor. Sin embargo, no tenemos explicación para las demás IPs.
